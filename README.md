@@ -25,6 +25,8 @@ Büyüme, gübreleme ve sulama esnasında görsel efektler görebilirsiniz.
 
 Büyüme 100% olduğunda toplanabilir.
 
+Toplandığında kenevirin yanı sıra kullandığınız saksıyı geri alırsınız.
+
 Size ait olan fidanı başkası toplayamaz, gübreleyemez veya sulayamaz ancak görebilir.
 
 Fidanlar hasar almaz.
