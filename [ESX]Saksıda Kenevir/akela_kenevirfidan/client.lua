@@ -415,7 +415,7 @@ Citizen.CreateThread(function()
 			local pos = GetEntityCoords(GetPlayerPed(-1))
 			local modelHash3 = 'prop_big_shit_02'
 			for k, v in pairs(area) do
-				local dist = GetDistanceBetweenCoords(286.76, 4329.9, 47.51, pos.x, pos.y, pos.z, false)
+				local dist = GetDistanceBetweenCoords(286.76, 4329.9, 47.51, pos.x, pos.y, pos.z, true)
 				local say = math.random(1,10)
 				local ax = area[say].x
 				local ay = area[say].y
@@ -454,23 +454,24 @@ end)
 Citizen.CreateThread(function()
 	while true do 
 		Wait(1)
-		
-		local poopc = GetEntityCoords(poop)
-		local pos = GetEntityCoords(GetPlayerPed(-1))
-		if poopc ~= nil then 
-			local mesafe = Vdist2(poopc.x, poopc.y, poopc.z, pos.x, pos.y, pos.z)
-			if mesafe < 1.5 then
-			if toplaniyor == false then 
-					hintToDisplay('Gübre toplamak için ~INPUT_CONTEXT~ bas')
-				
-					if IsControlJustPressed(0, Keys['E']) then
-						gtopla()
-						toplaniyor = true
-					end		
+		if uretim == false then 
+			local poopc = GetEntityCoords(poop)
+			local pos = GetEntityCoords(GetPlayerPed(-1))
+			if poopc ~= nil then 
+				local mesafe = GetDistanceBetweenCoords(poopc.x, poopc.y, poopc.z, pos.x, pos.y, pos.z, true)
+				if mesafe < 1.3 then
+				if toplaniyor == false then 
+						hintToDisplay('Gübre toplamak için ~INPUT_CONTEXT~ bas')
+					
+						if IsControlJustPressed(0, Keys['E']) then
+							gtopla()
+							toplaniyor = true
+						end		
+					end
 				end
-			end
-			DrawMarker(1, Config.SellPoint.x, Config.SellPoint.y, Config.SellPoint.z , 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.0, 3.0, 2.0, 0, 70, 250, 30, false, true, 2, false, false, false, false)	
-		end 
+				DrawMarker(1, Config.SellPoint.x, Config.SellPoint.y, Config.SellPoint.z , 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.0, 3.0, 2.0, 0, 70, 250, 30, false, true, 2, false, false, false, false)	
+			end 
+		end	
 	end 
 end)
 
