@@ -406,20 +406,21 @@ function topla()
 end
 
 local poop
-local uretim
+local uretim = true
 local area = Config.Area
 Citizen.CreateThread(function()
 	while true do 
 		Wait(0)
+		if uretim == true then 
 			local pos = GetEntityCoords(GetPlayerPed(-1))
 			local modelHash3 = 'prop_big_shit_02'
 			for k, v in pairs(area) do
-				local dist = Vdist2(286.76, 4329.9, 47.51, pos.x, pos.y, pos.z)
+				local dist = GetDistanceBetweenCoords(286.76, 4329.9, 47.51, pos.x, pos.y, pos.z, false)
 				local say = math.random(1,10)
 				local ax = area[say].x
 				local ay = area[say].y
 				local az = area[say].z
-				if dist <= 200 then 
+				if dist <= 100 then 
 					if uretim == true then
 						poop = CreateObject(modelHash3, vector3(ax, ay, az), false)
 						PlaceObjectOnGroundProperly(poop)
@@ -437,6 +438,7 @@ Citizen.CreateThread(function()
 					end
 				end
 			end		
+		end	
 	end 
 end)
 
