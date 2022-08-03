@@ -411,8 +411,15 @@ local area = Config.Area
 Citizen.CreateThread(function()
 	while true do 
 		Wait(0)
+		local pos = GetEntityCoords(GetPlayerPed(-1))
+		local popcord = GetEntityCoords(poop)
+		if popcord ~= nil then 
+			local popmesafe = GetDistanceBetweenCoords(popcord, pos, true)
+			if popmesafe <= 15 then 
+				DrawMarker(1, popcord.x, popcord.y, popcord.z , 0.0, 0.0, 0.0, 0, 0.0, 0.0, 1.0, 1.0, 1.5, 250, 70, 50, 20, false, true, 2, false, false, false, false)	
+			end
+		end 
 		if uretim == true then 
-			local pos = GetEntityCoords(GetPlayerPed(-1))
 			local modelHash3 = 'prop_big_shit_02'
 			for k, v in pairs(area) do
 				local dist = GetDistanceBetweenCoords(286.76, 4329.9, 47.51, pos.x, pos.y, pos.z, true)
